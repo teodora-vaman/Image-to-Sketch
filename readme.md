@@ -14,5 +14,5 @@ A script to transform multiple images at once. Specify the source and destinatio
 
 
 ``` Bash
-    python images_to_sketches.py --image_folder "images" --destination_folder "destination" 
+    python images_to_sketches.py --source_folder "images" --destination_folder "destination" 
 ```

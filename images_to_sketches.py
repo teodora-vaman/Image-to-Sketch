@@ -16,16 +16,16 @@ def image_to_sketch(image):
     return sketch_image
 
 def main(config):
-    if not os.path.exists(config.image_folder):
+    if not os.path.exists(config.source_folder):
         print("Folder does not exist")
         exit()
     
     if not os.path.exists(config.destination_folder):
         os.makedirs(config.destination_folder)
 
-    for image_path in os.listdir(config.image_folder):
+    for image_path in os.listdir(config.source_folder):
         if (image_path.endswith(".jpg")):
-            image = cv2.imread(config.image_folder + "\\" + image_path)
+            image = cv2.imread(config.source_folder + "\\" + image_path)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             sketch_image = image_to_sketch(image)
             cv2.imwrite(config.destination_folder + '\\' + image_path, sketch_image) 
@@ -34,7 +34,7 @@ def main(config):
 if __name__ == "__main__":
     if __name__ == '__main__':
         parser = argparse.ArgumentParser()
-        parser.add_argument('--image_folder', type=str, default="images", help='folder that contains the images you want to transform into sketches')
+        parser.add_argument('--source_folder', type=str, default="images", help='folder that contains the images you want to transform into sketches')
         parser.add_argument('--destination_folder', type=str, default="destination", help='folder where sketches are saved')
 
 
